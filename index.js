@@ -4,8 +4,8 @@
 var ntlm = require('httpntlm').ntlm;
 var async = require('async');
 var httpreq = require('httpreq');
-var HttpsAgent = require('agentkeepalive').HttpsAgent;
-var keepaliveAgent = new HttpsAgent();
+var HttpAgent = require('agentkeepalive');
+var keepaliveAgent = new HttpAgent({keepAlive: true});
 var fs = require('fs');
 
 var options = {
@@ -29,7 +29,7 @@ module.exports = {
                         'Connection': 'keep-alive',
                         'Authorization': type1msg,
                         'Content-Type': 'text/xml;charset=UTF-8',
-                        'SOAPAction': opt.soapAction
+                        'SOAPAction': opt.SOAPAction
                     },
                     body: fileData,
                     agent: keepaliveAgent
@@ -48,7 +48,7 @@ module.exports = {
                         'Connection': 'Close',
                         'Authorization': type3msg,
                         'Content-Type': 'text/xml;charset=UTF-8',
-                        'SOAPAction': opt.soapAction
+                        'SOAPAction': opt.SOAPAction
                     },
                     'body':fileData,
                     allowRedirects: false,

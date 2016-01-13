@@ -1,6 +1,6 @@
 {
   "name": "ntlm-soap-request-by-xml",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "use to request over ntlm authen server and get soap data",
   "main": "index.js",
   "scripts": {
